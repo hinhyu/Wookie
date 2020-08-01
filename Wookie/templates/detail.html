@@ -9,7 +9,9 @@
     <p> 게시물 번호(id) : {{ post.pk }}</p>
     <p> 글쓴이 : post.writer</p>
     <p> 등록일 : {{ post.pub_date }}</p>
-    <p> {{ post.image }}</p>
+    {% if post.image %}
+        <img src="{{post.image.url}}">
+    {% endif %} 
     <p> {{ post.body }}</p>
     <button type='button' onclick=location href="{% url 'delete' post.pk %}">삭제하기</button>
     <div style="margin:0px 50px">
