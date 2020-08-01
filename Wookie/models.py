@@ -1,10 +1,13 @@
 from django.db import models
 from django.utils import timezone
 import accounts.models
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
+
 
 class Post(models.Model):
     title = models.CharField(max_length=150)
-    image = models.ImageField(upload_to='images', default='')
+    image = ProcessedImageField(upload_to='images/', processors=[ResizeToFill(200, 200)], format='JPEG', options={'quality':80},)
     pub_date = models.DateTimeField('date published')
     body = models.TextField()
     

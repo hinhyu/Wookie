@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from django.contrib.auth.models import User, AbstractUser, BaseUserManager
-
+ 
 # class UserManager(BaseUserManager):
 #     use_in_migrations = True
 

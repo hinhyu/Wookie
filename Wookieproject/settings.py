@@ -16,6 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Wookie.apps.WookieConfig',
     'accounts.apps.AccountsConfig',
+    'imagekit',
 ]
 
 MIDDLEWARE = [
@@ -121,15 +123,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'post', 'static')
+STATICFILES_DIRS= [
+    os.path.join(BASE_DIR, 'Wookie', 'static')
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 AUTH_USER_MODEL = 'accounts.Profile'
 # 기존 모델이 아니라 새로 만든 모델을 쓰겠다고 정의
