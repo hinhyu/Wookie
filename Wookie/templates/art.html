@@ -14,7 +14,10 @@
              <td> 제목: {{ obj.title }} </td>
         </tr>    
         <tr>
-            <td> 내용 : {{ obj.body }} {{obj.image }} </td>
+            <td> 내용 : {{ obj.body }}
+                {% if obj.image %}
+                <img src="{{obj.image.url}}">
+                {% endif %}  </td>
         </tr>
         <tr>
             <td> 작성자 : {{obj.writer }} 작성일 : {{obj.pub_date }}</td>
