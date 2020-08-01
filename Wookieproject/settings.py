@@ -56,7 +56,7 @@ ROOT_URLCONF = 'Wookieproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['Wookieproject/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
