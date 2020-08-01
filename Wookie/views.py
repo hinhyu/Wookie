@@ -47,7 +47,9 @@ def send_message(request, comment_id, user_id):
         message.receiver = receiver
         message.text = request.POST['body']
         message.save()
-    return render(request, 'main.html')
+    recieved = Message.objects.filter(receiver=sender)
+    sent = Message.objects.filter(sender=sender)
+    return render(request, 'profile.html', {'recieved':recieved, 'sent':sent})
 
 def new(request):
     return render(request, 'new.html')
