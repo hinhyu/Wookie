@@ -4,8 +4,7 @@ from .models import Post, Comment, Message
 from accounts.models import Profile
 
 def main(request):
-    objs = Post.objects
-    return render(request, 'main.html', {'obj' : objs})
+    return render(request, 'main.html')
 
 def detail(request, pk, user_id):
     post = get_object_or_404(Post, pk = pk)
@@ -13,15 +12,15 @@ def detail(request, pk, user_id):
     return render(request, 'detail.html', {'post':post, 'user':user})
 
 def beauty(request):
-    objs = Post.objects
+    objs = Post.objects.filter(category="beauty")
     return render(request, 'beauty.html', {'obj' : objs})
 
 def art(request):
-    objs = Post.objects
+    objs = Post.objects.filter(category="art")
     return render(request, 'art.html', {'obj' : objs})
 
 def other(request):
-    objs = Post.objects
+    objs = Post.objects.filter(category="other")
     return render(request, 'other.html', {'obj' : objs})
 
 def add_comment(request, pk, user_id):
@@ -67,13 +66,14 @@ def create(request):
     else:
         return render(request, 'new.html')
 
+
 def edit(request, pk):
     post = get_object_or_404(Post, pk = pk)
    
     if request.method == 'POST':
         post.title = request.POST['title']
         post.image = request.FILES['image']
-        post.body = request.POST['body']
+        post.body = request.POST['body']        
         post.save()
         return redirect('/Wookie/'+str(post.id))
     

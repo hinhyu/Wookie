@@ -7,6 +7,13 @@ class Post(models.Model):
     image = models.ImageField(upload_to='images', default='')
     pub_date = models.DateTimeField('date published')
     body = models.TextField()
+    
+    completion = (
+		('beauty', 'Beauty'),
+        ('art', 'Art'),
+        ('other', 'Other'),
+    )
+    category = models.CharField(max_length=10, choices=completion, default="beauty")
 
     def __str__(self):
         return self.title

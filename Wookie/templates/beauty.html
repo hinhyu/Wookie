@@ -1,3 +1,4 @@
+{% block content %}   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,13 +7,16 @@
     <title>Beauty</title>
 </head>
 <body>
+
 {% block content %}    
     <div class = 'posts wrapper'>
     {% for obj in obj.all %}
     <article class='post_item {{ obj.pk }}' onclick="location.href='{% url 'detail' obj.pk user.id%}'">
         <ui class='item'>
         <li class='post_image'>
-            {{obj.image }} 
+            {% if obj.image %}
+                <img src="{{obj.image.url}}">
+            {% endif %}
         </li>
         <li class='post_title'>
              <span>{{ obj.title }} </span>>
@@ -29,3 +33,4 @@
 {% endblock %}
 </body>
 </html>
+{% endblock %}
