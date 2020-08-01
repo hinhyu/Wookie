@@ -7,21 +7,25 @@
 </head>
 <body>
 {% block content %}    
-    <table>
-    {% for obj in posts.all %}
-    
-        <tr>
-             <td> 제목: {{ obj.title }} </td>
-        </tr>    
-        <tr>
-            <td> 내용 : {{ obj.body }} {{obj.image }} </td>
-        </tr>
-        <tr>
-            <td> 작성자 : {{obj.writer }} 작성일 : {{obj.pub_date }}</td>
-        </tr>
-    
+    <div class = 'posts wrapper'>
+    {% for obj in obj.all %}
+    <article class='post_item {{ obj.pk }}' onclick="location.href='{% url 'detail' obj.pk user.id%}'">
+        <ui class='item'>
+        <li class='post_image'>
+            {{obj.image }} 
+        </li>
+        <li class='post_title'>
+             <span>{{ obj.title }} </span>>
+        </li>    
+        <li>
+            <span>{{obj.writer }}</span>
+        </li>
+        <li>
+            <span>{{obj.pub_date }}</span>
+        </li>
+    </article>
     {% endfor %}
-    </table>
+    </div>
 {% endblock %}
 </body>
 </html>
