@@ -6,12 +6,24 @@ def main(request):
     objs = Post.objects
     return render(request, 'main.html', {'obj' : objs})
 
-def detail(request, post_id):
-    post = get_object_or_404(Post, pk = post_id)
+def detail(request, pk):
+    post = get_object_or_404(Post, pk = pk)
     return render(request, 'detail.html', {'post':post})
 
-def add_comment(request, post_id):
-    post = get_object_or_404(Post, pk = post_id)
+def beauty(request):
+    objs = Post.objects
+    return render(request, 'beauty.html', {'obj' : objs})
+
+def art(request):
+    objs = Post.objects
+    return render(request, 'art.html', {'obj' : objs})
+
+def other(request):
+    objs = Post.objects
+    return render(request, 'other.html', {'obj' : objs})
+
+def add_comment(request, pk):
+    post = get_object_or_404(Post, pk = pk)
     if request.method == 'POST':
         comment = Comment()
         comment.post = post

@@ -1,23 +1,37 @@
-<div style="margin:0px 50px">
-    {{ post.title }}<br>
-    {{ post.image }}
-    <h1>댓글</h1>
-    <form action="{% url 'add_comment' post.id %}" method="POST">
-        {% csrf_token %}
-        <textarea style="width:95%; height:10%" placeholder="댓글 작성하기" name="body"></textarea>
-        <input type="submit" value="작성">
-    </form>
-    <br>
-    {% for comment in post.comments.all %}
-        <div>
-            {{ comment.id }}<br>
-            {{ comment.body }}<br><br>
-            <form>
-                <input type="submit" value="쪽지 보내기">
-            </form>
-        </div>
-        <br><hr><br>
-    {% empty %}
-        <p>아직 댓글이 없습니다!</p>
-    {% endfor %}
-</div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{post.pk}}번째 게시물</title>
+</head>
+<body>
+    <h1> {{post.title}} </h1>
+    <p> 게시물 번호(id) : {{ post.pk }}</p>
+    <p> 글쓴이 : post.writer</p>
+    <p> 등록일 : {{ post.pub_date }}</p>
+    <p> {{ post.image }}</p>
+    <p> {{ post.body }}</p>
+    <button type='button' onclick='location.href="{% url "delete" post.pk %}"'>삭제하기</button>
+    <div style="margin:0px 50px">
+        <h1>댓글</h1>
+        <form action="{% url 'add_comment' post.id %}" method="POST">
+            {% csrf_token %}
+            <textarea style="width:95%; height:10%" placeholder="댓글 작성하기" name="body"></textarea>
+            <input type="submit" value="작성">
+        </form>
+        <br>
+        {% for comment in post.comments.all %}
+            <div>
+                {{ comment.id }}<br>
+                {{ comment.body }}<br><br>
+                <form>
+                    <input type="submit" value="쪽지 보내기">
+                </form>
+            </div>
+            <br><hr><br>
+        {% empty %}
+            <p>아직 댓글이 없습니다!</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
