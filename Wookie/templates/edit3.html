@@ -4,7 +4,7 @@
 <body>    
     <br>
     <div class="box">
-        <form action="{% url 'edit' posts.id %}" method="POST">
+        <form action="{% url 'edit3' posts.id %}" method="POST">
             {% csrf_token %}
             <input type="text" name = "title" value="{{posts.title}}"> <br>
             <input type="file" name="image"> <br>
