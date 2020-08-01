@@ -1,8 +1,75 @@
-<div style="margin:0px 100px">
-    <h1>쪽지</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>우리끼리</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'Wookie/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'Wookie/css/heroic-features.css' %}" rel="stylesheet">
+
+  <style>
+    nav {
+        font-weight: bold;
+    }
+    header {
+        background-image: url("{% static 'Wookie/img/mainImg.jpg' %}");
+        color: aliceblue;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd;" style="royalblue">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'main' %}">우리끼리</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'main' %}">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'beauty' %}">Beauty</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'art' %}">Art</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'other' %}">Other</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="accounts/signup">Sign up!</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="accounts/login">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div style="margin:40px 100px">
+    <h1 style="font-weight:bold">쪽지</h1>
     <form action="{% url 'send_message' comment_id user_id %}" method="POST">
         {% csrf_token %}
-        <textarea style="width:95%; height:80%" placeholder="쪽지 작성하기" name="body"></textarea>
-        <input type="submit" value="보내기">
+        <textarea style="width:95%; margin:20px 0px" placeholder="쪽지 작성하기" name="body"></textarea>
+        <input type="submit" class="btn btn-secondary" value="보내기">
     </form>
 </div>
+</body>
+</html>

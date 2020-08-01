@@ -8,7 +8,6 @@
 </head>
 <body>
 
-{% block content %}    
     <div class = 'posts wrapper'>
     {% for obj in obj.all %}
     <article class='post_item {{ obj.pk }}' onclick="location.href='{% url 'detail' obj.pk user.id%}'">
@@ -30,7 +29,6 @@
     </article>
     {% endfor %}
     </div>
-{% endblock %}
 </body>
 </html>
 {% endblock %}
