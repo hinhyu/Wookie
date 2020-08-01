@@ -1,6 +1,10 @@
 <h1>받은 쪽지</h1>
 {% for msg in recieved.all %}
-    보낸 사람: {{msg.sender}}&nbsp;&nbsp;&nbsp;내용: {{msg.text}}<br>
+    <div>
+        보낸 사람: {{msg.sender}}<br>
+        받은 시간: {{msg.created_date}}<br>
+        내용: {{msg.text}}<br><br>
+    </div>
 {% empty %}
     <p>받은 쪽지가 없습니다!</p>
 {% endfor %}
@@ -9,7 +13,11 @@
 
 <h1>보낸 쪽지</h1>
 {% for msg in sent.all %}
-    받은 사람: {{msg.receiver}}&nbsp;&nbsp;&nbsp;내용: {{msg.text}}<br>
+    <div>
+        보낸 사람: {{msg.receiver}}<br>
+        받은 시간: {{msg.created_date}}<br>
+        내용: {{msg.text}}<br><br>
+    </div>
 {% empty %}
     <p>보낸 쪽지가 없습니다!</p>
 {% endfor %}
