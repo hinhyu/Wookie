@@ -1,0 +1,23 @@
+<h1>받은 쪽지</h1>
+{% for msg in recieved.all %}
+    <div>
+        보낸 사람: {{msg.sender}}<br>
+        받은 시간: {{msg.created_date}}<br>
+        내용: {{msg.text}}<br><br>
+    </div>
+{% empty %}
+    <p>받은 쪽지가 없습니다!</p>
+{% endfor %}
+
+<br><hr><br>
+
+<h1>보낸 쪽지</h1>
+{% for msg in sent.all %}
+    <div>
+        보낸 사람: {{msg.receiver}}<br>
+        받은 시간: {{msg.created_date}}<br>
+        내용: {{msg.text}}<br><br>
+    </div>
+{% empty %}
+    <p>보낸 쪽지가 없습니다!</p>
+{% endfor %}

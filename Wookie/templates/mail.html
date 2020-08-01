@@ -1,0 +1,8 @@
+<div style="margin:0px 100px">
+    <h1>쪽지</h1>
+    <form action="{% url 'send_message' comment_id user_id %}" method="POST">
+        {% csrf_token %}
+        <textarea style="width:95%; height:80%" placeholder="쪽지 작성하기" name="body"></textarea>
+        <input type="submit" value="보내기">
+    </form>
+</div>
