@@ -22,8 +22,7 @@ def art(request):
 
 def other(request):
     objs = Post.objects
-    user = get_object_or_404(Profile, pk = user_id)
-    return render(request, 'other.html', {'obj' : objs, 'user':user})
+    return render(request, 'other.html', {'obj' : objs})
 
 def add_comment(request, pk, user_id):
     post = get_object_or_404(Post, pk = pk)
