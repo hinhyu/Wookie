@@ -121,5 +121,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'post', 'static')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 AUTH_USER_MODEL = 'accounts.Profile'
 # 기존 모델이 아니라 새로 만든 모델을 쓰겠다고 정의

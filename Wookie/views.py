@@ -11,15 +11,15 @@ def detail(request, pk):
     return render(request, 'detail.html', {'post':post})
 
 def beauty(request):
-    objs = Post.objects
+    objs = Post.objects.filter(category="beauty")
     return render(request, 'beauty.html', {'obj' : objs})
 
 def art(request):
-    objs = Post.objects
+    objs = Post.objects.filter(category="art")
     return render(request, 'art.html', {'obj' : objs})
 
 def other(request):
-    objs = Post.objects
+    objs = Post.objects.filter(category="other")
     return render(request, 'other.html', {'obj' : objs})
 
 def add_comment(request, pk):
