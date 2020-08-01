@@ -5,3 +5,5 @@ class Post(models.Model):
     image = models.ImageField(upload_to='images', default='')
     pub_date = models.DateTimeField('date published')
     body = models.TextField()
+    writer = models.CharField(max_length=20)
+

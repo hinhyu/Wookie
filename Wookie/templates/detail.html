@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{post.pk}}번째 게시물</title>
+</head>
+<body>
+    <h1> {{obj.title}} </h1>
+    <p> 게시물 번호(id) : {{ obj.pk }}</p>
+    <p> 글쓴이 : {{ obj.writer }}</p>
+    <p> 등록일 : {{ obj.pub_date }}</p>
+    <p> {{ obj.image }}</p>
+    <p> {{ obj.body }}</p>
+    <button type='button' onclick='location.href="{% url "delete" obj.pk %}"'>삭제하기</button>
+</body>
+</html>

@@ -39,3 +39,19 @@ def delete(request, pk):
     post = get_object_or_404(Post, pk = pk)
     post.delete()
     return redirect('main')
+
+def detail(request,pk):
+    objs = get_object_or_404(Post, pk=pk)
+    return render(request,'detail.html',{'obj':objs})
+
+def beauty(request):
+    objs = Post.objects
+    return render(request, 'beauty.html', {'obj' : objs})
+
+def art(request):
+    objs = Post.objects
+    return render(request, 'art.html', {'obj' : objs})
+
+def other(request):
+    objs = Post.objects
+    return render(request, 'other.html', {'obj' : objs})
