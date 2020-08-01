@@ -1,10 +1,23 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Post
+from .models import Post, Comment
 
 def main(request):
     objs = Post.objects
     return render(request, 'main.html', {'obj' : objs})
+
+def detail(request, post_id):
+    post = get_object_or_404(Post, pk = post_id)
+    return render(request, 'detail.htm', {'post':post})
+
+def add_comment(request, post_id):
+    post = get_object_or_404(Post, pk = post_id)
+    if request.method == 'POST':
+        comment = Comment()
+        comment.post = post
+        comment.body = request.POST['body']
+        comment.save()
+    return redirect('/Wookie/detail/'+str(post.id))
 
 def new(request):
     return render(request, 'new.html')
