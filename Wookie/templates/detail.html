@@ -22,9 +22,10 @@
         <br>
         {% for comment in post.comments.all %}
             <div>
-                {{ user.username }}<br>
+                {{ comment.author.username }}<br>
                 {{ comment.body }}<br><br>
-                <form>
+                <form action="{% url 'write_message' comment.author.id user.id%}" method="POST">
+                    {% csrf_token %}
                     <input type="submit" value="쪽지 보내기">
                 </form>
             </div>

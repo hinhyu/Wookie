@@ -19,3 +19,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.body[:20]
+
+class Message(models.Model):
+    sender = models.ForeignKey(accounts.models.Profile, on_delete=models.CASCADE, related_name="sender")
+    receiver = models.ForeignKey(accounts.models.Profile, on_delete=models.CASCADE, related_name="receiver")
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.text[:20]
