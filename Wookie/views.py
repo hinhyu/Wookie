@@ -1,14 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Post, Comment
+from accounts.models import Profile
 
 def main(request):
     objs = Post.objects
     return render(request, 'main.html', {'obj' : objs})
 
-def detail(request, pk):
+def detail(request, pk, user_id):
     post = get_object_or_404(Post, pk = pk)
-    return render(request, 'detail.html', {'post':post})
+    user = get_object_or_404(Profile, pk = user_id)
+    return render(request, 'detail.html', {'post':post, 'user':user})
 
 def beauty(request):
     objs = Post.objects
@@ -22,14 +24,16 @@ def other(request):
     objs = Post.objects
     return render(request, 'other.html', {'obj' : objs})
 
-def add_comment(request, pk):
+def add_comment(request, pk, user_id):
     post = get_object_or_404(Post, pk = pk)
+    author = get_object_or_404(Profile, pk = user_id)
     if request.method == 'POST':
         comment = Comment()
         comment.post = post
+        comment.author = author
         comment.body = request.POST['body']
         comment.save()
-    return redirect('/Wookie/detail/'+str(post.id))
+    return redirect('/Wookie/detail/'+str(post.id)+'/'+str(author.id))
 
 def new(request):
     return render(request, 'new.html')

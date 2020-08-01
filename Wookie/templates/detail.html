@@ -14,7 +14,7 @@
     <button type='button' onclick='location.href="{% url "delete" post.pk %}"'>삭제하기</button>
     <div style="margin:0px 50px">
         <h1>댓글</h1>
-        <form action="{% url 'add_comment' post.id %}" method="POST">
+        <form action="{% url 'add_comment' post.id user.id %}" method="POST">
             {% csrf_token %}
             <textarea style="width:95%; height:10%" placeholder="댓글 작성하기" name="body"></textarea>
             <input type="submit" value="작성">
@@ -22,7 +22,7 @@
         <br>
         {% for comment in post.comments.all %}
             <div>
-                {{ comment.id }}<br>
+                {{ user.username }}<br>
                 {{ comment.body }}<br><br>
                 <form>
                     <input type="submit" value="쪽지 보내기">

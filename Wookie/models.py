@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+import accounts.models
 
 class Post(models.Model):
     title = models.CharField(max_length=150)
@@ -12,6 +13,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(accounts.models.Profile, on_delete=models.CASCADE, related_name="author")
     pub_date = models.DateTimeField(default=timezone.now)
     body = models.TextField()
 
