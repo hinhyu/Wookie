@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beauty</title>
+    <title>Art</title>
 </head>
 <body>
 {% block content %}    
-    <table>
-    {% for obj in posts.all %}
     
+    {% for obj in obj.all %}
+    <table>
         <tr>
              <td> 제목: {{ obj.title }} </td>
         </tr>    
@@ -19,9 +19,12 @@
         <tr>
             <td> 작성자 : {{obj.writer }} 작성일 : {{obj.pub_date }}</td>
         </tr>
-    
+        <tr>
+        <a href="{% url 'detail' obj.pk user.id%}">자세히 보기</a>
+        </tr>
+    </table>    
     {% endfor %}
-    </table>
+    
 {% endblock %}
 </body>
 </html>
