@@ -16,7 +16,7 @@ def signup(request):
             user.nickname = request.POST["nickname"]
             user.save()
             auth.login(request,user)
-            return redirect('/main')
+            return render(request, 'main.html', {'user':user})
     return render(request, 'signup.html')
 
 
@@ -27,12 +27,13 @@ def login(request):
         user = auth.authenticate(request, username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('/login')
+            user = get_object_or_404(Profile, username=username)
+            return render(request, 'main.html', {'user':user})
         else:
             return render(request, 'login.html', {'error' : 'username or password is incorrect.'})
     else:
         return render(request, 'login.html')
-    return render(request, 'login.html')
+    return render(request, 'main.html')
 
 def logout(request):
     if request.method == "POST":

@@ -11,17 +11,20 @@ def detail(request, pk, user_id):
     user = get_object_or_404(Profile, pk = user_id)
     return render(request, 'detail.html', {'post':post, 'user':user})
 
-def beauty(request):
+def beauty(request, user_id):
     objs = Post.objects.filter(category="beauty")
-    return render(request, 'beauty.html', {'obj' : objs})
+    user = get_object_or_404(Profile, pk = user_id)
+    return render(request, 'beauty.html', {'obj' : objs, 'user':user})
 
-def art(request):
+def art(request, user_id):
     objs = Post.objects.filter(category="art")
-    return render(request, 'art.html', {'obj' : objs})
+    user = get_object_or_404(Profile, pk = user_id)
+    return render(request, 'art.html', {'obj' : objs, 'user':user})
 
-def other(request):
+def other(request, user_id):
     objs = Post.objects.filter(category="other")
-    return render(request, 'other.html', {'obj' : objs})
+    user = get_object_or_404(Profile, pk = user_id)
+    return render(request, 'other.html', {'obj' : objs, 'user':user})
 
 def add_comment(request, pk, user_id):
     post = get_object_or_404(Post, pk = pk)

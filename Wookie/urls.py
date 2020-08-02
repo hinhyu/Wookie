@@ -16,9 +16,9 @@ urlpatterns = [
     path('edit/<int:pk>', Wookie.views.edit, name='edit'),
     path('delete/<int:pk>', Wookie.views.delete, name='delete'),
     path('detail/<int:pk>/', Wookie.views.detail, name='detail'),
-    path('beauty/', Wookie.views.beauty, name='beauty'),
-    path('art/', Wookie.views.art, name='art'),
-    path('other/', Wookie.views.other, name='other'),
+    path('beauty/<int:user_id>', Wookie.views.beauty, name='beauty'),
+    path('art/<int:user_id>', Wookie.views.art, name='art'),
+    path('other/<int:user_id>', Wookie.views.other, name='other'),
     path('accounts/', include('accounts.urls')),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

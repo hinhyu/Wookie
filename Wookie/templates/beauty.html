@@ -1,114 +1,11 @@
-{% block content %}   
+{% extends 'base.html' %}   
+{% block content %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'Wookie/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'Wookie/css/heroic-features.css' %}" rel="stylesheet">
-
-    <style>
-        @font-face { 
-            font-family: 'S-CoreDream-3Light'; 
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') 
-            format('woff'); 
-            font-weight: normal; 
-            font-style: normal; 
-        }
-        body {
-            font-family: 'S-CoreDream-3Light'; 
-            text-align: center;
-        }
-        nav {
-            font-family: 'S-CoreDream-3Light';
-            font-weight: bold;
-            background-color: #e3f2fd;
-            height: 60px;
-        }      
-        .navbar-brand {
-            font-size: 25px;
-        }
-        .box {
-            position: relative;
-            top: 100px;
-            border-style: dashed;
-            border-width: 5px;
-            border-color:  rgb(68, 94, 138); 
-
-            border-radius: 25px;
-            padding: 20px;
-            margin: 30px 80px;
-            background-color: rgb(149, 179, 228);
-        }
-        h1 {
-            color: whitesmoke;
-            font-weight: 800;
-        }
-        p {
-            color: whitesmoke;
-        }
-        .date {
-            text-align: right;
-        }
-        .text {
-            position: relative;
-            left: 50px;
-            padding: 30px;
-            width: 550px;
-        }
-        .img {
-            position: relative;
-            width: 50%;
-            max-width: 300px;
-        }
-    </style>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beauty</title>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="">&nbsp;우리끼리</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="{% url 'main' %}">Home
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'beauty' %}">Beauty</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'art' %}">Art</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'other' %}">Other</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="accounts/signup">Sign up!</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="accounts/login">Login</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    <table>
-    {% for obj in obj.all %}
+  {% for obj in obj.all %}
     <div class="box">
-        <br>
-        <a href="{%url 'detail' obj.id%}">
-            <h1>{{obj.title}}</h1>        
+        <br><br>
+        <a style="text-decoration:none; text-align:center;" href="{%url 'detail' obj.id user.id%}">
+            <h1 class="center">{{obj.title}}</h1>        
         </a>
         <br>            
         <p class="date">{{obj.pub_date}}</p>
@@ -119,8 +16,7 @@
         <br>
     </div>
     <br>
-    {% endfor %}
-    </div>
-</body>
-</html>
+  {% empty %}
+    <p>등록된 글이 없습니다!</p>
+  {% endfor %}
 {% endblock %}

@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>우리끼리</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'Wookie/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'Wookie/css/heroic-features.css' %}" rel="stylesheet">
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'Wookie/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'Wookie/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <style>
+        @font-face { 
+                font-family: 'S-CoreDream-3Light'; 
+                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') 
+                format('woff'); 
+                font-weight: normal; 
+                font-style: normal; 
+        }
+        body {
+            font-family: 'S-CoreDream-3Light'; 
+        }
+        nav {
+            font-family: 'S-CoreDream-3Light';
+            font-weight: bold;
+            background-color: #e3f2fd;
+            height: 60px;
+        }      
+        .navbar-brand {
+            font-size: 25px;
+        }
+        header {
+            background-image: url("{% static 'Wookie/img/mainImg.jpg' %}");
+            color: aliceblue;
+        }
+        .date {
+            text-align: right;
+        }
+        .box {
+            position: relative;
+            border-style: dashed;
+            border-width: 5px;
+            border-color:  rgb(68, 94, 138); 
+
+            border-radius: 25px;
+            padding: 20px;
+            margin: 30px 80px;
+            background-color: rgb(149, 179, 228);
+        }
+        .boxDetail {
+            position: relative;
+            border-style: dashed;
+            border-width: 5px;
+            border-color:  rgb(133, 164, 218); 
+
+            border-radius: 25px;
+            padding: 20px;
+            margin: 30px 80px;
+            background-color: rgb(179, 199, 230);
+        }
+        .pright {
+            text-align: right;
+        }  
+        .img {
+            display:block;
+            position: relative;
+            width: 50%;
+            max-width: 300px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        .text {
+            position: relative;
+            left: 50px;
+            padding: 30px;
+            width: 550px;
+        }
+        a { color: white; }
+        .center {
+            display:block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+    </head>
+
+    <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+        <a class="navbar-brand" href="{% url 'main' %}">우리끼리</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'main' %}">Home
+                <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'beauty' user.id%}">Beauty</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'art' user.id%}">Art</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'other' user.id%}">Other</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/accounts/signup">Sign up!</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/accounts/login">Login</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    </body>
+</html>
