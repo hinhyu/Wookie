@@ -1,0 +1,25 @@
+{% extends 'base.html' %}   
+{% block content %}
+{% load static %}
+  {% for obj in obj.all %}
+    <div class="box">
+        <br>
+        <a style="text-decoration:none; text-align:center;" href="{%url 'detail' obj.id user.id%}">
+            <h1>{{obj.title}}</h1>        
+        </a>
+        <br>            
+        <p class="date">{{obj.pub_date}}</p>
+        <br>
+        <div class="text">
+            <p>{{obj.summary}}</p>
+        </div>
+        {% if obj.image %}
+        <img src="{{obj.image.url}}" class="img">
+        {% endif %}
+        <br>
+    </div>
+    <br>
+  {% empty %}
+    <p>등록된 글이 없습니다!</p>
+  {% endfor %}
+{% endblock %}

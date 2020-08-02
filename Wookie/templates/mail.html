@@ -1,0 +1,12 @@
+{% extends 'base.html' %}   
+{% block content %}
+{% load static %}
+  <div style="margin:40px 100px">
+    <h1 style="font-weight:bold">쪽지</h1>
+    <form action="{% url 'send_message' comment_id user_id %}" method="POST">
+        {% csrf_token %}
+        <textarea style="width:95%; margin:20px 0px" placeholder="쪽지 작성하기" name="body"></textarea>
+        <input type="submit" class="btn btn-secondary" value="보내기">
+    </form>
+  </div>
+{% endblock %}

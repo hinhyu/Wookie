@@ -1,0 +1,22 @@
+{% block contents %}
+<head>
+    
+</head>
+<body>    
+    <div class="container">
+        <br>
+        <h2>새로운 글</h2>
+        <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <br>
+            <h4>제목</h4>
+            <input type="text" name="title"><br><br>
+            <br><br> <input type="file" name="image"> <br><br>
+            <h4>본문</h4>
+            <textarea name="body" cols="70" rows="10"></textarea>
+            <br>
+            <input type="submit" value="제출">
+        </form>
+    </div>
+</body>
+{% endblock %}

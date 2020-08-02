@@ -1,0 +1,37 @@
+{% extends 'base.html' %}   
+{% block content %}
+{% load static %}
+    <div class="boxDetail">
+        <br><h1 style="text-align:center; font-weight:bold"> {{post.title}} </h1>
+        <p class="pright"> 게시물 번호(id) : {{ post.pk }}</p>
+        <p class="pright"> 등록일 : {{ post.pub_date }}</p>
+        {% if post.image %}
+            <img src="{{post.image.url}}" class="img">
+        {% endif %} 
+        <br>
+        <p style="text-align:center;"> {{ post.body }}</p>
+        <button type='button' class="center" onclick=location href="{% url 'delete' post.pk %}">삭제하기</button>
+    </div>
+    <div class="boxDetail">
+        <br><h1 style="font-weight:bold">댓글</h1><br>
+        <form action="{% url 'add_comment' post.id user.id %}" method="POST">
+            {% csrf_token %}
+            <textarea style="width:90%; height:10%" placeholder="댓글 작성하기" name="body"></textarea>
+            <input type="submit" value="작성">
+        </form>
+        <br>
+        {% for comment in post.comments.all %}
+            <div>
+                <b>{{ comment.author.username }}</b><br>
+                {{ comment.body }}<br><br>
+                <form action="{% url 'write_message' comment.author.id user.id%}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="쪽지 보내기">
+                </form>
+            </div>
+            <br><hr><br>
+        {% empty %}
+            <p>아직 댓글이 없습니다!</p>
+        {% endfor %}
+    </div>
+{% endblock %}
